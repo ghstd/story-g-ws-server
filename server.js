@@ -1,13 +1,15 @@
-const http = require('http');
+// const http = require('http');
 const WebSocket = require('ws');
 
-const server = http.createServer((request, response) => { });
-const ws = new WebSocket.Server({ server });
+// const server = http.createServer((request, response) => { });
+// const ws = new WebSocket.Server({ server });
+
+const wss = new WebSocket.Server({ port: 3000 });
 
 let clients = [];
 
 // connection =============
-ws.on('connection', (ws, req) => {
+wss.on('connection', (ws, req) => {
 	console.log(`Connected ${req.socket.remoteAddress}`)
 	clients.push(ws)
 
@@ -47,9 +49,9 @@ ws.on('connection', (ws, req) => {
 	});
 });
 
-server.listen(3000, () => {
-	console.log('start');
-});
+// server.listen(3000, () => {
+// 	console.log('start');
+// });
 
 
 
